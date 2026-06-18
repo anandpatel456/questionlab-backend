@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: questionlab-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn config.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: DEBUG
+        value: "False"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
